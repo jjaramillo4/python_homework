@@ -1,3 +1,5 @@
+# Task 1
+
 import logging
 logger = logging.getLogger(__name__ + "_parameter_log")
 logger.setLevel(logging.INFO)
@@ -7,13 +9,13 @@ def logger_decorator(func):
     def wrapper(*args, **kwargs):
         logger.log(logging.INFO, f"function: {func.__name__}")
         if args:
-            logger.log(logging.INFO, f"positional parameters: {args}")
+            logger.log(logging.INFO, f"positional parameters: {list(args)}")
         else:
-            logger.log(logging.INFO, "positional parameters: None")
+            logger.log(logging.INFO, "positional parameters: none")
         if kwargs:
             logger.log(logging.INFO, f"keyword parameters: {kwargs}")
         else:
-            logger.log(logging.INFO, "keyword parameters: None")    
+            logger.log(logging.INFO, "keyword parameters: none")    
         result = func(*args, **kwargs)
         logger.log(logging.INFO, f"return: {result}")
         return result
