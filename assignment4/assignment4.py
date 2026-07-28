@@ -21,5 +21,47 @@ task1_older = task1_with_salary.copy()
 task1_older["Age"] = task1_older["Age"] + 1
 print(task1_older)
 
+task1_older.to_csv("employees.csv", index=False)
 
 #Task 2
+task2_employees = pd.read_csv('employees.csv')
+print(task2_employees)
+
+json_employees = pd.read_json('additional_employees.json')
+print(json_employees)
+
+more_employees = pd.concat([task2_employees, json_employees], ignore_index=True)
+print(more_employees)
+
+#Task 3
+first_three = more_employees.head(3)
+print(first_three)
+
+last_two = more_employees.tail(2)
+print(last_two) 
+
+employee_shape = more_employees.shape
+print(f"The shape of the DataFrame is: {employee_shape}")
+
+more_employees.info()
+
+#Task 4
+dirty_data = pd.read_csv('dirty_data.csv')
+print(dirty_data)   
+
+clean_data = dirty_data.copy()
+clean_data =clean_data.drop_duplicates(ignore_index=True)
+
+clean_data["Age"] = pd.to_numeric(clean_data["Age"], errors="coerce")
+clean_data["Salary"] = pd.to_numeric(clean_data["Salary"], errors="coerce")
+
+mean_age = clean_data["Age"].mean()
+median_salary = clean_data["Salary"].median()
+
+clean_data["Age"] = clean_data["Age"].fillna(mean_age)
+clean_data["Salary"] = clean_data["Salary"].fillna(median_salary)
+
+clean_data["Hire Date"] = pd.to_datetime(clean_data["Hire Date"], format="mixed", errors='coerce')
+
+clean_data["Name"] = clean_data["Name"].str.strip().str.upper()
+clean_data["Department"] = clean_data["Department"].str.strip().str.upper() 
