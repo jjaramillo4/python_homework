@@ -1,0 +1,44 @@
+Challenges in Assignment 8
+
+1. The OWASP project page doesn't have the top 10 on it anymore.
+The assignment points at https://owasp.org/www-project-top-ten/, but there is no
+list of the ten risks on that page. Since the 2025 edition came out, the main tab
+is just a few paragraphs linking to the release sites. I searched the page source
+for "Broken Access Control" and got nothing, so it wasn't a case of JavaScript
+loading the list in late. It really is gone.
+
+I kept that page as the starting point anyway, since that's what the assignment
+asks for, and had the script find the link to the 2021 release and follow it:
+
+    //a[contains(@href, 'owasp.org/Top10/2021')]
+
+Matching on the href instead of the link text means it still works if OWASP
+reworded the link.
+
+2. My first XPath returned way more than 10 results.
+The left navigation menu on the 2021 page repeats every risk link, so searching
+for anchors with _2021 in the href picked up two copies of everything. The list I
+actually wanted is the ordered list under the "The Top 10:2021 List" heading, so I
+anchored on that heading's id and stepped to the list beside it:
+
+    //h3[@id='the-top-102021-list']/following-sibling::ol[1]/li/a
+
+That gives exactly 10. I printed len() to confirm before going further.
+
+3. Relative links.
+The hrefs in the source are relative, like "A01_2021-Broken_Access_Control/",
+which would be useless in a CSV. Selenium's get_attribute("href") returns the
+resolved absolute URL rather than the raw attribute, so the full links ended up in
+the file without any extra work.
+
+4. Wrong Python environment.
+The script kept failing on ModuleNotFoundError, first for pandas and then for
+selenium. I have more than one virtual environment in this folder tree and was
+running the wrong interpreter. Once I pointed at the one with pandas and installed
+selenium and webdriver_manager into it, the script ran.
+
+5. Books with more than one author.
+In get_books.py, some search results list two or three authors and some list none,
+so find_element on the author link threw NoSuchElementException on those rows.
+Switching to find_elements fixed it, since that returns an empty list instead of
+raising. Then I just joined whatever came back with a semicolon.

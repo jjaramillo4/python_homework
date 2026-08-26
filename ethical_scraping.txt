@@ -1,0 +1,9 @@
+Why websites use robots.txt
+
+robots.txt lets a site tell crawlers which areas they may and may not access.
+It protects server resources and keeps non-content or administrative pages out
+of automated crawls. Honoring it is the baseline of ethical scraping, because it
+respects the site owner's stated wishes even though it is not legally enforced.
+
+The full analysis of Wikipedia's robots.txt, covering the restricted sections
+and the rules for specific user agents, is in assignment8/ethical_scraping.txt.
