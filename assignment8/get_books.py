@@ -7,16 +7,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-"""
-Task 1 - robots.txt compliance:
-AI agents and crawlers are disallowed. 
 
-Task 2 - HTML elements identified in dev tools:
- Single result:  li,   class = "cp-search-result-item"
-- Title:          span, class = "title-content"
-- Author:         a,    class = "author-link"
-- Format/Year:    span class = "display-info-primary", inside div class = "cp-format-info"
-"""
+# Task 1 - robots.txt compliance:
+# AI agents and crawlers are disallowed. 
+
+# Task 2 - HTML elements identified in dev tools:
+# Single result:  li,   class = "cp-search-result-item"
+# - Title:          span, class = "title-content"
+# - Author:         a,    class = "author-link"
+# - Format/Year:    span class = "display-info-primary", inside div class = "cp-format-info"
 
 # Task 3
 

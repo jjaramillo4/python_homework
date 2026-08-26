@@ -6,20 +6,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-"""
-Task 6 - HTML elements identified in dev tools:
-
-The project page https://owasp.org/www-project-top-ten/ no longer lists the
-ten risks itself.  It only links out to the release sites, so the script
-starts there, grabs the "OWASP Top Ten 2021" link, and follows it.
-
-On https://owasp.org/Top10/2021/ the list lives in an ordered list that
-follows the "The Top 10:2021 List" heading:
-- Heading:   h3, id = "the-top-102021-list"
-- List:      the first ol after that heading
-- Each risk: an a element inside an li of that ol
-XPath: //h3[@id='the-top-102021-list']/following-sibling::ol[1]/li/a
-"""
+# Task 6 - HTML elements identified in dev tools:
+#
+# The project page https://owasp.org/www-project-top-ten/ no longer lists the
+# ten risks itself.  It only links out to the release sites, so the script
+# starts there, grabs the "OWASP Top Ten 2021" link, and follows it.
+#
+# On https://owasp.org/Top10/2021/ the list lives in an ordered list that
+# follows the "The Top 10:2021 List" heading:
+# Heading:   h3, id = "the-top-102021-list"
+# List:      the first ol after that heading
+# Each risk: an a element inside an li of that ol
+# XPath: //h3[@id='the-top-102021-list']/following-sibling::ol[1]/li/a
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
