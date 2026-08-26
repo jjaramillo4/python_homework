@@ -41,18 +41,18 @@ try:
         book = {"Title": title, "Author": authors, "Format-Year": format_year}
         results.append(book)
     
-    driver.quit()
     book_df = pd.DataFrame(results)
     print(book_df)
 
+    # Task 4
+    book_df.to_csv("get_books.csv", index=False)
+
+    with open("get_books.json", "w") as f:
+        json.dump(results, f, indent=4)
 
 except Exception as e:
     print("couldn't get the web page")
     print(f"Exception: {type(e).__name__} {e}")
 
-    
-# Task 4
-book_df.to_csv("get_books.csv", index=False)
-
-with open("get_books.json", "w") as f:
-    json.dump(results, f, indent=4)
+finally:
+    driver.quit()

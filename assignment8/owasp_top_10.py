@@ -50,13 +50,15 @@ try:
         risk = {"Title": a.text, "Link": a.get_attribute("href")}
         results.append(risk)
 
-    driver.quit()
     print(results)
     owasp_df = pd.DataFrame(results)
     print(owasp_df)
+
+    owasp_df.to_csv("owasp_top_10.csv", index=False)
 
 except Exception as e:
     print("couldn't get the web page")
     print(f"Exception: {type(e).__name__} {e}")
 
-owasp_df.to_csv("owasp_top_10.csv", index=False)
+finally:
+    driver.quit()
