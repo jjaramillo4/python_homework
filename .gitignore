@@ -6,3 +6,6 @@ __pycache__/
 .vscode
 CACHEDIR.TAG
 .venv/
+assignment8/# Practice.py
+assignment8/8Practice.py
+employees.csv
