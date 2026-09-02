@@ -71,7 +71,7 @@ try:
         cursor.execute('''CREATE TABLE IF NOT EXISTS magazines(
                             magazine_id INTEGER PRIMARY KEY,
                             name TEXT NOT NULL UNIQUE,
-                            publisher_id INTEGER,
+                            publisher_id INTEGER NOT NULL,
                             FOREIGN KEY (publisher_id) REFERENCES publishers(publisher_id)
                        )''')
         cursor.execute('''CREATE TABLE IF NOT EXISTS subscribers(
@@ -84,6 +84,7 @@ try:
                             subscriber_id INTEGER,
                             magazine_id INTEGER,
                             expiration_date TEXT NOT NULL,
+                            UNIQUE(subscriber_id, magazine_id),
                             FOREIGN KEY (subscriber_id) REFERENCES subscribers(subscriber_id),
                             FOREIGN KEY (magazine_id) REFERENCES magazines(magazine_id)        
                        )''')

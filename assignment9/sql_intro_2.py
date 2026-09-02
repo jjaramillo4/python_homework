@@ -20,7 +20,7 @@ try:
 
     db_df = db_df.sort_values('product_name')
 
-    db_df.to_csv('order_summary.csv')
+    db_df.reset_index().to_csv('order_summary.csv', index=False)
 except Exception as e:
     print(f"Error connecting to database: {e}")
 finally:
