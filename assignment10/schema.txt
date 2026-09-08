@@ -1,0 +1,5 @@
+customers   customer_id, customer_name, contact, street, city, postal_code, country, phone
+employees   employee_id, first_name, last_name, phone
+products    product_id, product_name, price
+line_items  line_item_id, order_id → orders, product_id → products, quantity
+orders      order_id, customer_id → customers, employee_id → employees, date
