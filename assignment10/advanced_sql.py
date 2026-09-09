@@ -59,11 +59,7 @@ try:
         (customer_id, employee_id))
     order_id = cursor.fetchone()[0]
 
-    cursor.execute("INSERT INTO line_items (order_id, product_id, quantity) VALUES (?, ?, ?)", (order_id, product_ids[0][0], 10))
-    cursor.execute("INSERT INTO line_items (order_id, product_id, quantity) VALUES (?, ?, ?)", (order_id, product_ids[1][0], 10))
-    cursor.execute("INSERT INTO line_items (order_id, product_id, quantity) VALUES (?, ?, ?)", (order_id, product_ids[2][0], 10))
-    cursor.execute("INSERT INTO line_items (order_id, product_id, quantity) VALUES (?, ?, ?)", (order_id, product_ids[3][0], 10))
-    cursor.execute("INSERT INTO line_items (order_id, product_id, quantity) VALUES (?, ?, ?)", (order_id, product_ids[4][0], 10))
+    cursor.executemany("INSERT INTO line_items (order_id, product_id, quantity) VALUES (?, ?, ?)", [(order_id, p[0], 10) for p in product_ids])
 
     conn.commit()
 
