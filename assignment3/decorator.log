@@ -1,0 +1,12 @@
+function: print_Hello
+positional parameters: None
+keyword parameters: None
+return: None
+function: take_args
+positional parameters: (1, 2, 3, 4, 5)
+keyword parameters: None
+return: True
+function: take_kwargs
+positional parameters: None
+keyword parameters: {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+return: <function logger_decorator at 0x00000186DE70F9A0>
