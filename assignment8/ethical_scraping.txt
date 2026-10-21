@@ -1,0 +1,29 @@
+Ethical Web Scraping - Wikipedia robots.txt analysis
+Source: https://en.wikipedia.org/robots.txt
+
+1. Which sections of the website are restricted for crawling?
+   Key Disallow paths include:
+   - /w/            (internal wiki infrastructure)
+   - /api/          (API endpoints)
+   - /wiki/Special: (special pages)
+   - Editorial/administrative pages such as:
+       /wiki/Wikipedia:Articles_for_deletion/
+       /wiki/Wikipedia:Requests_for_adminship/
+       /wiki/Wikipedia:Requests_for_arbitration/
+       /wiki/Wikipedia:Copyright_problems
+   These block search/edit infrastructure and keep administrative
+   discussion pages out of search engine rankings.
+
+2. Are there specific rules for certain user agents?
+   Yes. Wikipedia names and fully blocks badly-behaved bots, for example:
+   - MJ12bot     (spammed pages and ignored rate limits)
+   - wget        (problematic in recursive mode)
+   - grub-client, WebReaper, HTTrack, WebStripper (aggressive site-copying bots)
+   It also includes Allow: exceptions, e.g. /w/api.php?action=mobileview&
+
+3. Why do websites use robots.txt?
+   robots.txt lets a site tell crawlers which areas they may and may not
+   access. It protects server resources and keeps non-content or
+   administrative pages out of automated crawls. Honoring it is the baseline
+   of ethical scraping - it respects the site owner's stated wishes even
+   though it is not legally enforced.
